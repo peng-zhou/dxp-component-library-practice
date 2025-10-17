@@ -1,0 +1,36 @@
+{
+  "name": "Peter Parker",
+  "title": "Senior UX Designer",
+  "email": "peter.park@example.com",
+  "phone": "+11 (111) 123-4567",
+  "image": {
+    "name": "Peter Parker Profile",
+    "alt": "Profile photo of Peter Parker",
+    "imageVariations": {
+      "original": {
+        "url": "https://picsum.photos/200/200?random=1",
+        "width": 200,
+        "height": 200,
+        "byteSize": 15000,
+        "mimeType": "image/jpeg",
+        "aspectRatio": "1:1",
+        "sha1Hash": "1234567890abcdef1234567890abcdef12345678"
+      }
+    }
+  },
+  "showSocialLinks": true,
+  "socialLinks": [
+    {
+      "platform": "LinkedIn",
+      "url": "https://linkedin.com/in/test"
+    },
+    {
+      "platform": "Twitter",
+      "url": "https://twitter.com/test"
+    },
+    {
+      "platform": "Website",
+      "url": "https://test.com"
+    }
+  ]
+}

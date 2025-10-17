@@ -1,0 +1,156 @@
+{
+  "$schema": "http://localhost:3000/schemas/v1.json",
+  "name": "contact-card",
+  "namespace": "edge-dxp-comp-lib",
+  "description": "Displays a contact card with profile image, name, title, contact information, and social links.",
+  "displayName": "Contact Card",
+  "version": "1.0.0",
+  "type": "edge",
+  "mainFunction": "main",
+  "icon": {
+    "id": "person",
+    "color": {
+      "type": "enum",
+      "value": "gray"
+    }
+  },
+  "functions": [
+    {
+      "name": "main",
+      "entry": "main.js",
+      "input": {
+        "type": "object",
+        "title": "Contact Card",
+        "required": ["name"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Full Name",
+            "description": "Enter the person's full name.",
+            "default": "John Doe",
+            "ui:metadata": {
+              "inlineEditable": true
+            }
+          },
+          "title": {
+            "type": "string",
+            "title": "Job Title",
+            "description": "Enter the person's job title or role.",
+            "default": "Software Engineer",
+            "ui:metadata": {
+              "inlineEditable": true
+            }
+          },
+          "email": {
+            "type": "string",
+            "title": "Email Address",
+            "description": "Enter the person's email address.",
+            "format": "email",
+            "ui:metadata": {
+              "inlineEditable": true
+            }
+          },
+          "phone": {
+            "type": "string",
+            "title": "Phone Number",
+            "description": "Enter the person's phone number.",
+            "ui:metadata": {
+              "inlineEditable": true
+            }
+          },
+          "image": {
+            "type": "SquizImage",
+            "title": "Profile Image",
+            "description": "Select a profile image for the contact card.",
+            "ui:metadata": {
+              "inlineEditable": true
+            }
+          },
+          "showSocialLinks": {
+            "type": "boolean",
+            "title": "Show Social Links",
+            "description": "Enable social media links for this contact.",
+            "default": false,
+            "ui:metadata": {
+              "quickOption": true
+            }
+          },
+          "socialLinks": {
+            "type": "array",
+            "title": "Social Media Links",
+            "description": "Add social media profiles for this contact.",
+            "items": {
+              "type": "object",
+              "title": "Social Link",
+              "required": ["platform", "url"],
+              "properties": {
+                "platform": {
+                  "type": "string",
+                  "title": "Platform",
+                  "description": "Select the social media platform.",
+                  "enum": [
+                    "LinkedIn",
+                    "Twitter",
+                    "Facebook",
+                    "Instagram",
+                    "GitHub",
+                    "Website"
+                  ],
+                  "default": "LinkedIn"
+                },
+                "url": {
+                  "type": "string",
+                  "title": "URL",
+                  "description": "Enter the full URL to the social profile.",
+                  "format": "uri"
+                }
+              }
+            },
+            "maxItems": 6
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "required": ["showSocialLinks"],
+              "properties": {
+                "showSocialLinks": {
+                  "const": true
+                }
+              }
+            },
+            "then": {
+              "required": ["socialLinks"],
+              "properties": {
+                "socialLinks": {
+                  "minItems": 1
+                }
+              }
+            }
+          }
+        ]
+      },
+      "output": {
+        "responseType": "html"
+      }
+    }
+  ],
+  "staticFiles": {
+    "locationRoot": "./"
+  },
+  "previews": {
+    "default": {
+      "functionData": {
+        "main": {
+          "inputData": {
+            "type": "file",
+            "path": "example.data.json"
+          },
+          "wrapper": {
+            "path": "preview.html"
+          }
+        }
+      }
+    }
+  }
+}

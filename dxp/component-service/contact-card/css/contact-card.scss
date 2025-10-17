@@ -1,0 +1,234 @@
+@use '@styles/common/mixins';
+@use '@styles/common/variables';
+
+.contact-card {
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+  border-radius: variables.toRem(12);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  max-width: variables.toRem(320);
+  margin: 0 auto;
+
+  &:hover {
+    transform: translateY(variables.toRem(-2));
+    box-shadow: 0 4px 16px rgb(0 0 0 / 15%);
+  }
+
+  &__header {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    padding: variables.toRem(24) variables.toRem(24) variables.toRem(12);
+    text-align: center;
+  }
+
+  &__image {
+    width: variables.toRem(80);
+    height: variables.toRem(80);
+    border-radius: 50%;
+    border: 3px solid var(--white);
+    object-fit: cover;
+    display: inline-block;
+
+    &--placeholder {
+      background: var(--white);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: variables.toRem(24);
+      color: var(--primary);
+    }
+  }
+
+  &__initials {
+    display: inline-block;
+  }
+
+  &__content {
+    padding: variables.toRem(16) variables.toRem(20) variables.toRem(20);
+    text-align: center;
+  }
+
+  &__name {
+    margin: 0 0 variables.toRem(4) 0;
+    font-size: variables.toRem(20);
+    font-weight: 600;
+    color: var(--dark-gray);
+    line-height: 1.2;
+  }
+
+  &__title {
+    margin: 0 0 variables.toRem(16) 0;
+    font-size: variables.toRem(14);
+    color: var(--medium-gray);
+    font-weight: 400;
+  }
+
+  &__contact-info {
+    margin-bottom: variables.toRem(16);
+    display: flex;
+    flex-direction: column;
+    gap: variables.toRem(8);
+  }
+
+  &__contact-item {
+    text-decoration: none;
+    color: var(--medium-gray);
+    font-size: variables.toRem(14);
+    transition: color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: variables.toRem(8);
+
+    &:hover {
+      color: var(--primary);
+    }
+
+    &::before {
+      content: '';
+      width: variables.toRem(16);
+      height: variables.toRem(16);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  &__email::before {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIuNjY2NjcgMi42NjY2N0gxMy4zMzMzQzE0IDIuNjY2NjcgMTQuNjY2NyAzLjMzMzMzIDE0LjY2NjcgNFYxMkMxNC42NjY3IDEyLjY2NjcgMTQgMTMuMzMzMyAxMy4zMzMzIDEzLjMzMzNIMi42NjY2N0MyIDEzLjMzMzMgMS4zMzMzMyAxMi42NjY3IDEuMzMzMzMgMTJWNEMxLjMzMzMzIDMuMzMzMzMgMiAyLjY2NjY3IDIuNjY2NjcgMi42NjY2N1oiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2Utd2lkdGg9IjEuMzMzMzMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8cGF0aCBkPSJtMTQuNjY2NyA0LTYuNjY2NjcgNkwxLjMzMzMzIDQiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2Utd2lkdGg9IjEuMzMzMzMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K');
+  }
+
+  &__phone::before {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE0LjY2NjcgMTEuMjhWMTMuMjhDMTQuNjY3NCAxMy43NDUxIDE0LjUwNDYgMTQuMjAwNSAxNC4yMDczIDE0LjU1MTJDMTMuOTEgMTQuOTAxOCAxMy40OTE0IDE1LjEyNDUgMTMuMDMzMyAxNS4xNzMzQzExLjEyIDEyLjQ0IDguNTYgOS44OCAxLjUyIDUuNzMzMzNDMS4yOTMzMyA1LjQgMS4zMzMzMyA0LjY2NjY3IDEuNzIgNC4zNzMzM0wyLjQ2NjY3IDMuNzJDMi45MDY2NyAzLjQgMy41MiAzLjQgMy45NiAzLjcyTDUuNzMzMzMgNS4yQzYuMTMzMzMgNS41MzMzMyA2LjI5MzMzIDYuMDI2NjcgNi4xNDY2NyA6LjUwNjY3TDUuNjQgOC4xNzMzM0MxMC40NCAxMC44NTMzIDEyLjI0IDEyLjM4NjcgMTIuOCAxMi4xMzMzTDE0LjY2NjcgMTEuMjhaIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIxLjMzMzMzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==');
+  }
+
+  &__social-links {
+    display: flex;
+    justify-content: center;
+    gap: variables.toRem(12);
+    flex-wrap: wrap;
+  }
+
+  &__social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: variables.toRem(36);
+    height: variables.toRem(36);
+    border-radius: 50%;
+    background: var(--light-gray);
+    color: var(--medium-gray);
+    text-decoration: none;
+    font-size: variables.toRem(12);
+    font-weight: 500;
+    transition: all 0.2s ease;
+
+    &:hover {
+      transform: translateY(variables.toRem(-2));
+      box-shadow: 0 4px 8px rgb(0 0 0 / 15%);
+    }
+
+    &:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: variables.toRem(2);
+    }
+  }
+
+  &__social-icon {
+    font-size: variables.toRem(10);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    &--linkedin {
+      background: #0077b5;
+      color: var(--white);
+    }
+
+    &--twitter {
+      background: #1da1f2;
+      color: var(--white);
+    }
+
+    &--facebook {
+      background: #4267b2;
+      color: var(--white);
+    }
+
+    &--instagram {
+      background: linear-gradient(
+        45deg,
+        #f09433 0%,
+        #e6683c 25%,
+        #dc2743 50%,
+        #cc2366 75%,
+        #bc1888 100%
+      );
+      color: var(--white);
+    }
+
+    &--github {
+      background: #333;
+      color: var(--white);
+    }
+
+    &--website {
+      background: var(--primary);
+      color: var(--white);
+    }
+  }
+
+  // Apply platform-specific colors to the social link containers
+  &__social-link:has(&__social-icon--linkedin) {
+    background: #0077b5;
+  }
+
+  &__social-link:has(&__social-icon--twitter) {
+    background: #1da1f2;
+  }
+
+  &__social-link:has(&__social-icon--facebook) {
+    background: #4267b2;
+  }
+
+  &__social-link:has(&__social-icon--instagram) {
+    background: linear-gradient(
+      45deg,
+      #f09433 0%,
+      #e6683c 25%,
+      #dc2743 50%,
+      #cc2366 75%,
+      #bc1888 100%
+    );
+  }
+
+  &__social-link:has(&__social-icon--github) {
+    background: #333;
+  }
+
+  &__social-link:has(&__social-icon--website) {
+    background: var(--primary);
+  }
+
+  // Responsive design
+  @media screen and (max-width: variables.$breakpoint-sm) {
+    max-width: 100%;
+
+    &__content {
+      padding: variables.toRem(16);
+    }
+
+    &__social-links {
+      gap: variables.toRem(8);
+    }
+
+    &__social-link {
+      width: variables.toRem(32);
+      height: variables.toRem(32);
+    }
+  }
+}
