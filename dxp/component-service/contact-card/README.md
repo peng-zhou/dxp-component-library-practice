@@ -12,13 +12,13 @@ Users can customize the Contact Card component by providing contact information 
 
 ```
 {
-  "name": "Alex Chen",
+  "name": "Peter Parker",
   "title": "Product Manager",
-  "email": "alex.chen@example.com",
+  "email": "peter.parker@example.com",
   "phone": "+1 (555) 123-4567",
   "image": {
-    "name": "Alex Chen Profile",
-    "alt": "Profile photo of Alex Chen",
+    "name": "Peter Parker Profile",
+    "alt": "Profile photo of Peter Parker",
     "imageVariations": {
       "original": {
         "url": "https://picsum.photos/200/200?random=1",
@@ -35,11 +35,11 @@ Users can customize the Contact Card component by providing contact information 
   "socialLinks": [
     {
       "platform": "LinkedIn",
-      "url": "https://linkedin.com/in/alexchen"
+      "url": "https://linkedin.com/in/test"
     },
     {
       "platform": "Website",
-      "url": "https://alexchen.dev"
+      "url": "https://test.com"
     }
   ]
 }
